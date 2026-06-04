@@ -9,10 +9,11 @@ A["Input Structure"]
 %% Exploration layer
 %% =========================
 subgraph EXP[SQM-based PES exploration]
-B1["MD/Heuristics"]
-B1 --> B2["Reaction\n Network"]
-B2 --> B3["Graph\n reduction"]
-B3 -->|NO| B1
+B1["MD/Heuristic\n algorithms "]
+B1 --> B2["Optimization\n of structures"]
+B2 --> B3["RXNet\nnodes = minima\nedges = paths"]
+B3 --> B4["Stop\niterations?"]
+B4 -->|NO| B1
 end
 
 A --> EXP
@@ -49,7 +50,7 @@ E --> G["Reaction Network Construction\nnodes = minima\nedges = transitions"]
 G --> H["Analysis Layer\n- kinetics (TST/RRKM)\n- pathways\n- branching ratios"]
 end 
 
-B3 -->|YES| REF 
+B4 -->|YES| REF 
 
 %% =========================
 %% Output
