@@ -33,11 +33,13 @@ A --> EXP
 subgraph REF[" "]
 C[Reaction Candidates]
 
-C --> D["Ab inition Refinement"]
+C --> D["DFT calculations"]
 C --> E["ML potentials"]
+C --> F["Δ-ML corrections"]
 
-E --> F["Active Learning Loop\n- uncertainty sampling\n- data enrichment"]
-E --> G["Reaction Network Construction\nnodes = minima\nedges = transitions"]
+D --> G["RXNet"]
+E --> G
+F --> G
 
 G --> H["Analysis Layer\n- kinetics (TST/RRKM)\n- pathways\n- branching ratios"]
 end
