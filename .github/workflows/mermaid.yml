@@ -5,6 +5,9 @@ on:
     paths:
       - "diagrams/**.mmd"
 
+permissions:
+  contents: write
+
 jobs:
   render:
     runs-on: ubuntu-latest
