@@ -1,0 +1,31 @@
+name: Render Mermaid (no commit)
+
+on:
+  push:
+    paths:
+      - "diagrams/**.mmd"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install -g @mermaid-js/mermaid-cli puppeteer
+
+      - run: |
+          mkdir -p output
+          for file in diagrams/*.mmd; do
+            name=$(basename "$file" .mmd)
+            mmdc -i "$file" -o "output/$name.svg"
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mermaid-diagrams
+          path: output/
