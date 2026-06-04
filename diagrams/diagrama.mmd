@@ -1,2 +1,22 @@
 flowchart TD
-A-->BBC
+
+A[Input Definition<br/>- Molecular system<br/>- Initial structures<br/>- Conditions] --> B[Exploration Layer]
+
+B --> B1[Semiempirical QM<br/>(baseline AutoMeKin)]
+B --> B2[ML Potential Exploration<br/>(MACE / UMA)]
+
+B1 --> C[Reaction Candidates]
+B2 --> C
+
+C --> D[Filtering / Graph Reduction<br/>- clustering<br/>- pruning<br/>- ranking]
+
+D --> E[High-Level Refinement<br/>CCSD(T)-F12]
+
+E --> F[Active Learning Loop]
+F --> B2
+
+E --> G[Reaction Network Construction<br/>Graph: nodes + edges]
+
+G --> H[Analysis Layer<br/>- kinetics<br/>- pathways<br/>- barriers]
+
+H --> I[Reporting<br/>- figures<br/>- tables<br/>- publication outputs]
