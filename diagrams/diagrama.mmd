@@ -3,14 +3,16 @@ flowchart TD
 %% =========================
 %% Input
 %% =========================
-A["Input Definition\nMolecular system\nInitial structures\nThermodynamic conditions"]
+A["Input Structure"]
 
 %% =========================
 %% Exploration layer
 %% =========================
 subgraph EXP[Exploration Layer]
-B1["Semiempirical QM\nAutoMeKin baseline"]
-B2["ML Potential Exploration\nMACE / UMA / surrogate PES"]
+B1["SQM-based exploration"]
+B1 --> B2["SQM Reaction Network"]
+B2 --> B3["Graph reduction"]
+B3 --> B1
 end
 
 A --> EXP
@@ -18,8 +20,7 @@ A --> EXP
 %% =========================
 %% Reaction discovery
 %% =========================
-B1 --> C[Reaction Candidates]
-B2 --> C
+B3 --> C[Reaction Candidates]
 
 %% =========================
 %% Filtering
@@ -35,7 +36,6 @@ D --> E["High-Level Refinement\nCCSD(T)-F12\nReference energetics"]
 %% Active learning loop
 %% =========================
 E --> F["Active Learning Loop\n- uncertainty sampling\n- data enrichment"]
-F --> B2
 
 %% =========================
 %% Network construction
