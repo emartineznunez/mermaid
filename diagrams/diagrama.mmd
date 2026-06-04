@@ -16,9 +16,9 @@ A["Input Structure"]
 %% Exploration layer
 %% =========================
 subgraph EXP[" "]
-B1["MD/Heuristic\n algorithms "]
-B2["Optimization\n of structures"]
-B3["RXNet\nnodes = minima\nedges = paths"]
+B1["SQM-based\nMD/Heuristic\n algorithms "]
+B2["SQM optimization\n of structures"]
+B3["SQM RXNet"]
 B4["Stop\niterations?"]
 
 B1 --> B2 --> B3 --> B4
@@ -37,7 +37,7 @@ C --> D["DFT calculations"]
 C --> E["ML potentials"]
 C --> F["Δ-ML corrections"]
 
-D --> G["RXNet"]
+D --> G["Refined RXNet"]
 E --> G
 F --> G
 
