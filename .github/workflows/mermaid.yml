@@ -22,7 +22,8 @@ jobs:
           mkdir -p output
           for file in diagrams/*.mmd; do
             name=$(basename "$file" .mmd)
-            mmdc -i "$file" -o "output/$name.svg"
+            mmdc -i "$file" -o "output/$name.svg" \
+              --puppeteerConfig '{"args":["--no-sandbox","--disable-setuid-sandbox"]}'
           done
 
       - uses: actions/upload-artifact@v4
