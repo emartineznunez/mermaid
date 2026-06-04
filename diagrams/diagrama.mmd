@@ -1,22 +1,53 @@
 flowchart TD
 
-A[Input Definition - Molecular system - Initial structures - Conditions] --> B[Exploration Layer]
+%% =========================
+%% Input
+%% =========================
+A["Input Definition\nMolecular system\nInitial structures\nThermodynamic conditions"]
 
-B --> B1[Semiempirical QM\n baseline AutoMeKin]
-B --> B2[ML Potential Exploration MACE UMA]
+%% =========================
+%% Exploration layer
+%% =========================
+subgraph EXP[Exploration Layer]
+B1["Semiempirical QM\nAutoMeKin baseline"]
+B2["ML Potential Exploration\nMACE / UMA / surrogate PES"]
+end
 
+A --> EXP
+
+%% =========================
+%% Reaction discovery
+%% =========================
 B1 --> C[Reaction Candidates]
 B2 --> C
 
-C --> D[Filtering Graph Reduction\n clustering pruning ranking]
+%% =========================
+%% Filtering
+%% =========================
+C --> D["Filtering & Graph Reduction\n- clustering\n- pruning\n- energy ranking"]
 
-D --> E[High-Level Refinement\n CCSDT F12]
+%% =========================
+%% Refinement
+%% =========================
+D --> E["High-Level Refinement\nCCSD(T)-F12\nReference energetics"]
 
-E --> F[Active Learning Loop]
+%% =========================
+%% Active learning loop
+%% =========================
+E --> F["Active Learning Loop\n- uncertainty sampling\n- data enrichment"]
 F --> B2
 
-E --> G[Reaction Network Construction nodes edges]
+%% =========================
+%% Network construction
+%% =========================
+E --> G["Reaction Network Construction\nnodes = minima\nedges = transitions"]
 
-G --> H[Analysis Layer kinetics pathways barriers]
+%% =========================
+%% Analysis
+%% =========================
+G --> H["Analysis Layer\n- kinetics (TST/RRKM)\n- pathways\n- branching ratios"]
 
-H --> I[Reporting figures tables publication outputs]
+%% =========================
+%% Output
+%% =========================
+H --> I["Reporting\n- energy profiles\n- reaction networks\n- publication figures"]
