@@ -1,4 +1,10 @@
-%%{init: {'themeVariables': { 'background': '#ffffff' }}}%%
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'background': '#ffffff'
+  }
+}}%%
+
 flowchart TD
 
 %% =========================
@@ -47,19 +53,15 @@ H --> I["Reporting\n- energy profiles\n- reaction networks\n- publication figure
 %% STYLING
 %% =========================
 
-classDef inputFill fill:#f7f7f7,stroke:#333,stroke-width:1px;
-classDef expFill fill:#e8f4ff,stroke:#1e5aa8,stroke-width:1px;
-classDef refFill fill:#eaffea,stroke:#2f7d32,stroke-width:1px;
-classDef outFill fill:#fff4e6,stroke:#b35c00,stroke-width:1px;
+classDef inputFill fill:#f2f2f2,stroke:#333,stroke-width:1px,fill-opacity:1;
+classDef expFill fill:#e8f4ff,stroke:#1e5aa8,stroke-width:1px,fill-opacity:1;
+classDef refFill fill:#eaffea,stroke:#2f7d32,stroke-width:1px,fill-opacity:1;
+classDef outFill fill:#fff4e6,stroke:#b35c00,stroke-width:1px,fill-opacity:1;
 
-%% Input
 class A inputFill;
 
-%% Exploration layer
 class B1,B2,B3,B4 expFill;
 
-%% Refinement layer
 class C,D,E,F,G,H refFill;
 
-%% Output
 class I outFill;
