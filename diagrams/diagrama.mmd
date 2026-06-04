@@ -10,9 +10,11 @@ A["Input Structure"]
 %% =========================
 subgraph EXP[SQM-based PES exploration]
 B1["MD/Heuristic\n algorithms "]
-B1 --> B2["Optimization\n of structures"]
-B2 --> B3["RXNet\nnodes = minima\nedges = paths"]
-B3 --> B4["Stop\niterations?"]
+B2["Optimization\n of structures"]
+B3["RXNet\nnodes = minima\nedges = paths"]
+B4["Stop\niterations?"]
+
+B1 --> B2 --> B3 --> B4
 B4 -->|NO| B1
 end
 
@@ -22,37 +24,41 @@ A --> EXP
 %% Refinement layer
 %% =========================
 subgraph REF[PES Refinement]
-
-%% =========================
-%% Reaction discovery
-%% =========================
 C[Reaction Candidates]
 
-%% =========================
-%% Refinement
-%% =========================
 C --> D["Ab inition Refinement"]
 C --> E["ML potentials"]
 
-%% =========================
-%% Active learning loop
-%% =========================
 E --> F["Active Learning Loop\n- uncertainty sampling\n- data enrichment"]
-
-%% =========================
-%% Network construction
-%% =========================
 E --> G["Reaction Network Construction\nnodes = minima\nedges = transitions"]
 
-%% =========================
-%% Analysis
-%% =========================
 G --> H["Analysis Layer\n- kinetics (TST/RRKM)\n- pathways\n- branching ratios"]
-end 
+end
 
-B4 -->|YES| REF 
+B4 -->|YES| REF
 
 %% =========================
 %% Output
 %% =========================
 H --> I["Reporting\n- energy profiles\n- reaction networks\n- publication figures"]
+
+%% =========================
+%% STYLING
+%% =========================
+
+classDef inputFill fill:#f7f7f7,stroke:#333,stroke-width:1px;
+classDef expFill fill:#e8f4ff,stroke:#1e5aa8,stroke-width:1px;
+classDef refFill fill:#eaffea,stroke:#2f7d32,stroke-width:1px;
+classDef outFill fill:#fff4e6,stroke:#b35c00,stroke-width:1px;
+
+%% Input
+class A inputFill;
+
+%% Exploration layer
+class B1,B2,B3,B4 expFill;
+
+%% Refinement layer
+class C,D,E,F,G,H refFill;
+
+%% Output
+class I outFill;
