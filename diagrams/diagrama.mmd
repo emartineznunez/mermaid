@@ -20,12 +20,12 @@ A --> EXP
 %% =========================
 %% Refinement layer
 %% =========================
-subgraph EXP[PES Refinement]
+subgraph REF[PES Refinement]
 
 %% =========================
 %% Reaction discovery
 %% =========================
-B3 --> C[Reaction Candidates]
+C[Reaction Candidates]
 
 %% =========================
 %% Refinement
@@ -48,6 +48,8 @@ E --> G["Reaction Network Construction\nnodes = minima\nedges = transitions"]
 %% =========================
 G --> H["Analysis Layer\n- kinetics (TST/RRKM)\n- pathways\n- branching ratios"]
 end 
+
+B3 --> REF 
 
 %% =========================
 %% Output
