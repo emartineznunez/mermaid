@@ -24,8 +24,10 @@ jobs:
           for file in diagrams/*.mmd; do
             name=$(basename "$file" .mmd)
 
-            PUPPETEER_ARGS="--no-sandbox --disable-setuid-sandbox" \
-            npx mmdc -i "$file" -o "output/$name.svg"
+            npx mmdc \
+            -p puppeteer-config.json \
+            -i "$file" \
+            -o "output/$name.svg"
           done
 
       - uses: actions/upload-artifact@v4
