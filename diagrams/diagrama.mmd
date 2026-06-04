@@ -1,66 +1,50 @@
 %%{init: {
   'theme': 'base',
   'themeVariables': {
-    'background': '#ffffff'
+    'background': '#ffffff',
+    'clusterBkg': 'transparent',
+    'clusterBorder': 'transparent'
   }
 }}%%
-
 flowchart TD
-
 %% =========================
 %% Input
 %% =========================
 A["Input Structure"]
-
 %% =========================
-%% Exploration layer
+%% Exploration Layer
 %% =========================
 subgraph EXP[" "]
-B1["SQM-based\nPES exploration\n algorithms "]
-B2["SQM optimization\n of structures"]
-B3["SQM RXNet"]
-B4["Stop\niterations?"]
-
+B1["SQM-based\nPES Exploration\nAlgorithms"]
+B2["SQM Structure\nOptimization"]
+B3["SQM Reaction\nNetwork"]
+B4["Stop\nIterations?"]
 B1 --> B2 --> B3 --> B4
 B4 -->|NO| B1
 end
-
 A --> EXP
-
 %% =========================
-%% Refinement layer
+%% Refinement Layer
 %% =========================
 subgraph REF[" "]
-C[Reaction Candidates]
-
-C --> D["DFT calculations"]
-C --> E["ML potentials"]
-C --> F["Δ-ML corrections"]
-
-D --> G["Refined RXNet"]
+C["Reaction Candidates"]
+C --> D["DFT Calculations"]
+C --> E["ML Potentials"]
+C --> F["Δ-ML Corrections"]
+D --> G["Refined Reaction\nNetwork"]
 E --> G
 F --> G
-
-
 end
-
 B4 -->|YES| REF
-
-
-
 %% =========================
 %% STYLING
 %% =========================
-
 classDef inputFill fill:#f2f2f2,stroke:#333,stroke-width:1px,fill-opacity:1;
 classDef expFill fill:#e8f4ff,stroke:#1e5aa8,stroke-width:1px,fill-opacity:1;
 classDef refFill fill:#eaffea,stroke:#2f7d32,stroke-width:1px,fill-opacity:1;
 classDef outFill fill:#fff4e6,stroke:#b35c00,stroke-width:1px,fill-opacity:1;
-
 class A inputFill;
-
 class B1,B2,B3,B4 expFill;
-
 class C,D,E,F,G,H refFill;
-
 class I outFill;
+
