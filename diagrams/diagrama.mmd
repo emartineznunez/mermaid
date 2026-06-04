@@ -3,20 +3,20 @@ flowchart TD
 A[Input Definition - Molecular system - Initial structures - Conditions] --> B[Exploration Layer]
 
 B --> B1[Semiempirical QM baseline AutoMeKin]
-B --> B2[ML Potential Exploration MACE / UMA]
+B --> B2[ML Potential Exploration MACE UMA]
 
 B1 --> C[Reaction Candidates]
 B2 --> C
 
-C --> D[Filtering Graph Reduction - clustering pruning ranking]
+C --> D[Filtering Graph Reduction clustering pruning ranking]
 
-D --> E[High-Level Refinement CCSD(T)-F12]
+D --> E[High-Level Refinement CCSDT F12]
 
 E --> F[Active Learning Loop]
 F --> B2
 
-E --> G[Reaction Network Construction Graph nodes edges]
+E --> G[Reaction Network Construction nodes edges]
 
-G --> H[Analysis Layer - kinetics pathways barriers]
+G --> H[Analysis Layer kinetics pathways barriers]
 
 H --> I[Reporting figures tables publication outputs]
