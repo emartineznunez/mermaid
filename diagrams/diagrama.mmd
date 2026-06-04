@@ -12,7 +12,7 @@ subgraph EXP[SQM-based PES exploration]
 B1["MD/Heuristics"]
 B1 --> B2["Reaction\n Network"]
 B2 --> B3["Graph\n reduction"]
-B3 --> B1
+B3 -->|NO| B1
 end
 
 A --> EXP
@@ -49,7 +49,7 @@ E --> G["Reaction Network Construction\nnodes = minima\nedges = transitions"]
 G --> H["Analysis Layer\n- kinetics (TST/RRKM)\n- pathways\n- branching ratios"]
 end 
 
-B3 --> REF 
+B3 -->|YES| REF 
 
 %% =========================
 %% Output
