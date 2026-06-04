@@ -8,14 +8,19 @@ A["Input Structure"]
 %% =========================
 %% Exploration layer
 %% =========================
-subgraph EXP[Exploration Layer]
-B1["SQM-based exploration"]
-B1 --> B2["SQM Reaction Network"]
-B2 --> B3["Graph reduction"]
+subgraph EXP[SQM-based PES exploration]
+B1["MD/Heuristics"]
+B1 --> B2["Reaction Network"]
+B2 --> B3["Graph\n reduction"]
 B3 --> B1
 end
 
 A --> EXP
+
+%% =========================
+%% Refinement layer
+%% =========================
+subgraph EXP[PES Refinement]
 
 %% =========================
 %% Reaction discovery
@@ -23,14 +28,10 @@ A --> EXP
 B3 --> C[Reaction Candidates]
 
 %% =========================
-%% Filtering
-%% =========================
-C --> D["Filtering & Graph Reduction\n- clustering\n- pruning\n- energy ranking"]
-
-%% =========================
 %% Refinement
 %% =========================
-D --> E["High-Level Refinement\nCCSD(T)-F12\nReference energetics"]
+C --> D["Ab inition Refinement"]
+C --> E["ML potentials"]
 
 %% =========================
 %% Active learning loop
@@ -46,6 +47,7 @@ E --> G["Reaction Network Construction\nnodes = minima\nedges = transitions"]
 %% Analysis
 %% =========================
 G --> H["Analysis Layer\n- kinetics (TST/RRKM)\n- pathways\n- branching ratios"]
+end 
 
 %% =========================
 %% Output
