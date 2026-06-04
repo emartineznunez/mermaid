@@ -15,7 +15,7 @@ A["Input Structure"]
 %% =========================
 %% Exploration layer
 %% =========================
-subgraph EXP[SQM-based PES exploration]
+subgraph EXP
 B1["MD/Heuristic\n algorithms "]
 B2["Optimization\n of structures"]
 B3["RXNet\nnodes = minima\nedges = paths"]
@@ -30,7 +30,7 @@ A --> EXP
 %% =========================
 %% Refinement layer
 %% =========================
-subgraph REF[PES Refinement]
+subgraph REF
 C[Reaction Candidates]
 
 C --> D["Ab inition Refinement"]
